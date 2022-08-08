@@ -2,3 +2,8 @@ app-settings,
 app-clock {
   position: absolute;
 }
+
+/* temp */
+app-clock {
+  z-index: 0;
+}
