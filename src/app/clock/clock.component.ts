@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SettingsService } from '../settings/settings.service';
+import { Settings } from '../settings/settings.model';
 
 @Component({
   selector: 'app-clock',
@@ -8,8 +10,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css'],
 })
-export class ClockComponent implements OnInit {
-  constructor() {}
+export class ClockComponent implements OnInit, OnDestroy {
+  settings: Settings;
 
-  ngOnInit(): void {}
+  constructor(private settingsService: SettingsService) {
+    this.settings = this.settingsService.settings;
+  }
+
+  ngOnInit(): void {
+    console.log(this.settings);
+  }
+
+  ngOnDestroy(): void {}
 }

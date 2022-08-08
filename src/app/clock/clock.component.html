@@ -1,9 +1,27 @@
-<div class="wrapper">
+<div class="wrapper" [style.backgroundColor]="settings.bgColor">
   <div class="container">
-    <h1>01:02:03</h1>
-    <i class="ph-play"></i>
-    <i class="ph-pause"></i>
-    <i class="ph-arrow-counter-clockwise"></i>
+    <h1
+      [style.fontSize]="settings.fontSize + 'rem'"
+      [style.color]="settings.fontColor"
+      [style.fontWeight]="settings.fontWeight"
+    >
+      01:02:03
+    </h1>
+    <i
+      [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
+      [style.color]="settings.fontColor"
+      class="ph-play icon"
+    ></i>
+    <i
+      [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
+      [style.color]="settings.fontColor"
+      class="ph-pause icon"
+    ></i>
+    <i
+      [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
+      [style.color]="settings.fontColor"
+      class="ph-arrow-counter-clockwise icon"
+    ></i>
   </div>
   <i class="ph-gear settings"></i>
 </div>

@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
     <i class="ph-x close"></i>
-    <form>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <div class="toggle-mode">
         <i class="ph-caret-double-up"></i>
         <i class="ph-caret-double-down"></i>
@@ -9,32 +9,61 @@
 
       <div class="value-group">
         <label>Clock Values</label>
-        <input type="number" class="form-control" />
-        <input type="number" class="form-control" />
-        <input type="number" class="form-control" />
+        <input type="number" class="form-control" ngModel required name="hr" />
+        <input type="number" class="form-control" ngModel required name="min" />
+        <input type="number" class="form-control" ngModel required name="sec" />
       </div>
 
       <div class="form-group">
         <label for="fontsize">Fontsize</label>
-        <input type="number" class="form-control" />
+        <input
+          type="number"
+          class="form-control"
+          ngModel
+          required
+          name="fontSize"
+        />
       </div>
 
       <div class="form-group">
         <label for="fontcolor">Fontcolor</label>
-        <input type="number" class="form-control" />
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          required
+          name="fontColor"
+          value="test"
+        />
       </div>
 
       <div class="form-group">
         <label for="fontweight">Fontweight</label>
-        <input type="number" class="form-control" />
+        <input
+          type="number"
+          class="form-control"
+          ngModel
+          required
+          name="fontWeight"
+          pattern="^[1-9]+[0-9]*$"
+        />
       </div>
 
       <div class="form-group">
         <label for="bgcolor">Background color</label>
-        <input type="text" class="form-control" />
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          required
+          name="bgColor"
+        />
       </div>
 
-      <button type="button">Popout</button>
+      <div class="buttons">
+        <button type="button">Popout</button>
+        <button type="submit"><i class="ph-floppy-disk"></i></button>
+      </div>
     </form>
   </div>
 </div>
