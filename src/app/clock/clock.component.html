@@ -5,17 +5,21 @@
       [style.color]="settings.fontColor"
       [style.fontWeight]="settings.fontWeight"
     >
-      01:02:03
+      {{ settings.hr }}:{{ settings.min }}:{{ settings.sec }}
     </h1>
     <i
+      *ngIf="!running"
       [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
       [style.color]="settings.fontColor"
       class="ph-play icon"
+      (click)="toggleMode()"
     ></i>
     <i
+      *ngIf="running"
       [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
       [style.color]="settings.fontColor"
       class="ph-pause icon"
+      (click)="toggleMode()"
     ></i>
     <i
       [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
@@ -23,5 +27,5 @@
       class="ph-arrow-counter-clockwise icon"
     ></i>
   </div>
-  <i class="ph-gear settings"></i>
+  <i (click)="toggleSettings()" class="ph-gear settings"></i>
 </div>
