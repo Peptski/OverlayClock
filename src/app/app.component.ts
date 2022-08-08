@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ClockComponent } from './clock/clock.component';
 
 @Component({
-  imports: [RouterModule],
+  imports: [RouterModule, ClockComponent],
   standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
