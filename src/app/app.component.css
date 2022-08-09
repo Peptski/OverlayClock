@@ -1,4 +1,5 @@
 app-settings,
 app-clock {
   position: absolute;
+  overflow: hidden;
 }

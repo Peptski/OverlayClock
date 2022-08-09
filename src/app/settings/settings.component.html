@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="open">
+<div class="wrapper" @openClose *ngIf="open">
   <div class="padbox" (click)="toggleState()"></div>
   <div class="container">
     <i class="ph-x close" (click)="toggleState()"></i>

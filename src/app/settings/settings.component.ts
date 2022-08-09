@@ -1,10 +1,10 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SettingsService } from './settings.service';
 import { Settings } from './settings.model';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { TwodigitPipe } from '../twodigit.pipe';
 
 @Component({
   selector: 'app-settings',
@@ -12,6 +12,18 @@ import { TwodigitPipe } from '../twodigit.pipe';
   imports: [CommonModule, FormsModule],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css'],
+  animations: [
+    trigger('openClose', [
+      transition(':enter', [
+        style({ transform: 'translateX(20%)' }),
+        animate('100ms', style({ transform: 'translateX(0)' })),
+      ]),
+      transition(':leave', [
+        style({ transform: 'translateX(0)' }),
+        animate('100ms', style({ transform: 'translateX(20%)' })),
+      ]),
+    ]),
+  ],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   @ViewChild('form', { static: false })
