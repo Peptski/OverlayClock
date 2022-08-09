@@ -3,12 +3,12 @@
     <i class="ph-x close" (click)="toggleState()"></i>
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <div class="toggle-mode">
-        <i class="ph-caret-double-up"></i>
+        <i class="ph-caret-double-up active"></i>
         <i class="ph-caret-double-down"></i>
       </div>
 
       <div class="value-group">
-        <label>Clock Values</label>
+        <label>Initial values</label>
         <input type="number" class="form-control" ngModel required name="hr" />
         <input type="number" class="form-control" ngModel required name="min" />
         <input type="number" class="form-control" ngModel required name="sec" />
@@ -26,18 +26,6 @@
       </div>
 
       <div class="form-group">
-        <label for="fontcolor">Fontcolor</label>
-        <input
-          type="text"
-          class="form-control"
-          ngModel
-          required
-          name="fontColor"
-          value="test"
-        />
-      </div>
-
-      <div class="form-group">
         <label for="fontweight">Fontweight</label>
         <input
           type="number"
@@ -46,6 +34,18 @@
           required
           name="fontWeight"
           pattern="^[1-9]+[0-9]*$"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="fontcolor">Fontcolor</label>
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          required
+          name="fontColor"
+          value="test"
         />
       </div>
 
@@ -61,7 +61,7 @@
       </div>
 
       <div class="buttons">
-        <button type="button">Popout</button>
+        <button type="button"><i class="ph-picture-in-picture"></i></button>
         <button type="submit"><i class="ph-floppy-disk"></i></button>
       </div>
     </form>

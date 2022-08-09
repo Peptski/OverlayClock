@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { SettingsService } from '../settings/settings.service';
 import { Settings } from '../settings/settings.model';
 import { Subscription } from 'rxjs';
+import { TwodigitPipe } from '../twodigit.pipe';
 
 @Component({
   selector: 'app-clock',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TwodigitPipe],
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css'],
 })

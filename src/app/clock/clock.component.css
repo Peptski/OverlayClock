@@ -8,8 +8,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #222;
-  color: #fff;
+  background-color: #0f172a;
+  color: #d1d5db;
   position: relative;
 }
 
@@ -30,7 +30,15 @@ img {
 .container i {
   margin: auto;
   font-size: 2rem;
-  padding: 0.5rem;
+  padding: 0.6rem;
+  background-color: #1f2937;
+  color: #d1d5db;
+  border-radius: 50%;
+}
+
+.container i:hover {
+  background-color: #374151;
+  color: #e5e7eb;
 }
 
 .ph-play,

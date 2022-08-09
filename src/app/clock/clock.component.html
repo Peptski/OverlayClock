@@ -5,7 +5,9 @@
       [style.color]="settings.fontColor"
       [style.fontWeight]="settings.fontWeight"
     >
-      {{ settings.hr }}:{{ settings.min }}:{{ settings.sec }}
+      {{ settings.hr | twodigit }}:{{ settings.min | twodigit }}:{{
+        settings.sec | twodigit
+      }}
     </h1>
     <i
       *ngIf="!running"

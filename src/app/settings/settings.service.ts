@@ -8,9 +8,9 @@ export class SettingsService {
     min: 2,
     sec: 1,
     fontSize: 3,
-    fontColor: '#ccc',
+    fontColor: '#d1d5db',
     fontWeight: 700,
-    bgColor: '#222',
+    bgColor: '#111827',
   };
 
   settingsState = new EventEmitter<boolean>();
