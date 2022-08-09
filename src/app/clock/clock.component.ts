@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SettingsService } from '../settings/settings.service';
 import { Settings } from '../settings/settings.model';
 import { Subscription } from 'rxjs';
-import { TwodigitPipe } from '../twodigit.pipe';
+import { TwodigitPipe } from '../pipes/twodigit.pipe';
 
 @Component({
   selector: 'app-clock',
@@ -14,7 +14,7 @@ import { TwodigitPipe } from '../twodigit.pipe';
 })
 export class ClockComponent implements OnInit, OnDestroy {
   currentSettings: Settings;
-  currentMode = false; //false stopwatch, true timer
+  currentMode = false;
   running = false;
   interval: any;
 

@@ -13,9 +13,36 @@
 
       <div class="value-group">
         <label>Initial values</label>
-        <input type="number" class="form-control" ngModel required name="hr" />
-        <input type="number" class="form-control" ngModel required name="min" />
-        <input type="number" class="form-control" ngModel required name="sec" />
+        <input
+          type="number"
+          class="form-control"
+          ngModel
+          required
+          ValidTime
+          min="0"
+          max="60"
+          name="hr"
+        />
+        <input
+          type="number"
+          class="form-control"
+          ngModel
+          required
+          ValidTime
+          min="0"
+          max="60"
+          name="min"
+        />
+        <input
+          type="number"
+          class="form-control"
+          ngModel
+          required
+          ValidTime
+          min="0"
+          max="60"
+          name="sec"
+        />
       </div>
 
       <div class="form-group">
@@ -25,6 +52,9 @@
           class="form-control"
           ngModel
           required
+          validFontSize
+          min="0"
+          max="8"
           name="fontSize"
         />
       </div>
@@ -36,6 +66,10 @@
           class="form-control"
           ngModel
           required
+          validFontWeight
+          min="100"
+          max="900"
+          step="100"
           name="fontWeight"
           pattern="^[1-9]+[0-9]*$"
         />
@@ -48,6 +82,7 @@
           class="form-control"
           ngModel
           required
+          validColor
           name="fontColor"
           value="test"
         />
@@ -60,6 +95,7 @@
           class="form-control"
           ngModel
           required
+          validColor
           name="bgColor"
         />
       </div>

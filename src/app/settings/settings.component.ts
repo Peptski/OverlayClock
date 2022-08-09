@@ -5,11 +5,22 @@ import { SettingsService } from './settings.service';
 import { Settings } from './settings.model';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { ValidTimeDirective } from '../directives/valid-time.directive';
+import { validFontSizeDirective } from '../directives/valid-font-size.directive';
+import { validFontWeightDirective } from '../directives/valid-font-weight.directive';
+import { validColorDirective } from '../directives/valid-color-directive';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ValidTimeDirective,
+    validFontSizeDirective,
+    validFontWeightDirective,
+    validColorDirective,
+  ],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css'],
   animations: [
