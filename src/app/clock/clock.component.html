@@ -17,20 +17,23 @@
       *ngIf="!running"
       [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
       [style.color]="currentSettings.fontColor"
-      class="ph-play icon"
+      class="ph-play icon hover"
+      [ngClass]="{ hover: currentSettings.bgColor === '#111827' }"
       (click)="start()"
     ></i>
     <i
       *ngIf="running"
       [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
       [style.color]="currentSettings.fontColor"
-      class="ph-pause icon"
+      class="ph-pause icon hover"
+      [ngClass]="{ hover: currentSettings.bgColor === '#111827' }"
       (click)="stop()"
     ></i>
     <i
       [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
       [style.color]="currentSettings.fontColor"
-      class="ph-arrow-counter-clockwise icon"
+      class="ph-arrow-counter-clockwise icon hover"
+      [ngClass]="{ hover: currentSettings.bgColor === '#111827' }"
       (click)="clearValue()"
     ></i>
   </div>

@@ -55,6 +55,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
         if (state) {
           setTimeout(() => {
             this.settingsForm.setValue(this.currentSettings);
+            this.saveLocally();
           });
         }
       }
@@ -95,6 +96,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
     }
 
     this.settingsService.stopClock.emit(true);
+    this.saveLocally();
+  }
+
+  saveLocally() {
+    localStorage.setItem('settings', JSON.stringify(this.currentSettings));
   }
 
   toggleState() {
@@ -148,5 +154,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       video.requestPictureInPicture();
     }, 50);
+  }
+
+  resetSettings() {
+    this.settingsService.resetSettings();
   }
 }

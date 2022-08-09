@@ -5,7 +5,7 @@ import { Settings } from './settings.model';
 export class SettingsService {
   public settings: Settings = {
     hr: 0,
-    min: 15,
+    min: 0,
     sec: 0,
     fontSize: 8,
     fontColor: '#d1d5db',
@@ -17,6 +17,11 @@ export class SettingsService {
   settingsUpdated = new EventEmitter<Settings>();
   modeState = new EventEmitter<boolean>();
   stopClock = new EventEmitter<boolean>();
+
+  setSettings(settings: Settings) {
+    this.settings = settings;
+    this.settingsUpdated.emit(this.settings);
+  }
 
   openSettings() {
     this.settingsState.emit(true);
@@ -41,5 +46,19 @@ export class SettingsService {
     this.settingsUpdated.emit(this.settings);
 
     return true;
+  }
+
+  resetSettings() {
+    this.settings = {
+      hr: 0,
+      min: 0,
+      sec: 0,
+      fontSize: 8,
+      fontColor: '#d1d5db',
+      fontWeight: 700,
+      bgColor: '#111827',
+    };
+    this.settingsUpdated.emit(this.settings);
+    this.settingsState.emit(true);
   }
 }
