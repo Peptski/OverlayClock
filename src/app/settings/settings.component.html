@@ -65,9 +65,14 @@
       </div>
 
       <div class="buttons">
-        <button type="button"><i class="ph-picture-in-picture"></i></button>
+        <button type="button" (click)="openPiP()">
+          <i class="ph-picture-in-picture"></i>
+        </button>
         <button type="submit"><i class="ph-floppy-disk"></i></button>
       </div>
     </form>
   </div>
 </div>
+
+<canvas height="200" width="300" style="display: none"></canvas>
+<video autoplay muted style="display: none"></video>

@@ -7,7 +7,7 @@ export class SettingsService {
     hr: 0,
     min: 15,
     sec: 0,
-    fontSize: 6,
+    fontSize: 8,
     fontColor: '#d1d5db',
     fontWeight: 700,
     bgColor: '#111827',
@@ -16,6 +16,7 @@ export class SettingsService {
   settingsState = new EventEmitter<boolean>();
   settingsUpdated = new EventEmitter<Settings>();
   modeState = new EventEmitter<boolean>();
+  stopClock = new EventEmitter<boolean>();
 
   openSettings() {
     this.settingsState.emit(true);
@@ -36,7 +37,7 @@ export class SettingsService {
 
     this.settings.sec = time % 60;
     this.settings.min = ((time - (time % 60)) % 3600) / 60;
-    this.settings.hr = (time - (time % 3600)) / 360;
+    this.settings.hr = (time - (time % 3600)) / 3600;
     this.settingsUpdated.emit(this.settings);
 
     return true;

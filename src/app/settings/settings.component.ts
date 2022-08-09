@@ -4,6 +4,7 @@ import { SettingsService } from './settings.service';
 import { Settings } from './settings.model';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { TwodigitPipe } from '../twodigit.pipe';
 
 @Component({
   selector: 'app-settings',
@@ -39,6 +40,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.settingsUpdateSub = this.settingsService.settingsUpdated.subscribe(
       (settings) => {
         this.currentSettings = settings;
+        const canvas = document.querySelector('canvas')!;
+        const ctx = canvas.getContext('2d')!;
+        ctx.font = `${this.currentSettings.fontWeight} ${
+          this.currentSettings.fontSize / 2
+        }rem Inter`;
       }
     );
   }
@@ -64,6 +70,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
         ))
       );
     }
+
+    this.settingsService.stopClock.emit(true);
   }
 
   toggleState() {
@@ -78,5 +86,44 @@ export class SettingsComponent implements OnInit, OnDestroy {
         .querySelectorAll('.mode')
         .forEach((ele) => ele.classList.toggle('active'));
     }
+  }
+
+  openPiP() {
+    const video = document.querySelector('video')!;
+    const canvas = document.querySelector('canvas')!;
+
+    const ctx = canvas.getContext('2d')!;
+    ctx.textAlign = 'center';
+    ctx.font = `${this.currentSettings.fontWeight} ${
+      this.currentSettings.fontSize / 2
+    }rem Inter`;
+    ctx.fillStyle = this.currentSettings.bgColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = this.currentSettings.fontColor;
+
+    setInterval(() => {
+      const hr = this.currentSettings.hr.toString();
+      const min = this.currentSettings.min.toString();
+      const sec = this.currentSettings.sec.toString();
+
+      ctx.fillStyle = this.currentSettings.bgColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = this.currentSettings.fontColor;
+      ctx.fillText(
+        `${hr.length == 1 ? '0' + hr : '' + hr}:${
+          min.length == 1 ? '0' + min : '' + min
+        }:${sec.length == 1 ? '0' + sec : '' + sec}`,
+        canvas.width / 2,
+        canvas.height / 1.7
+      );
+    }, 25);
+
+    let vidStrm = canvas.captureStream(30);
+
+    video.srcObject = vidStrm;
+
+    setTimeout(() => {
+      video.requestPictureInPicture();
+    }, 50);
   }
 }

@@ -12,6 +12,7 @@
         currentSettings.min | twodigit
       }}:{{ currentSettings.sec | twodigit }}
     </h1>
+
     <i
       *ngIf="!running"
       [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"

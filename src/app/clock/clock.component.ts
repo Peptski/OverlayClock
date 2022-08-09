@@ -20,16 +20,23 @@ export class ClockComponent implements OnInit, OnDestroy {
 
   settingsUpdateSub: Subscription;
   modeSub: Subscription;
+  submissionSub: Subscription;
 
   constructor(private settingsService: SettingsService) {
     this.currentSettings = this.settingsService.settings;
 
     this.settingsUpdateSub = this.settingsService.settingsUpdated.subscribe(
-      (settings) => (this.currentSettings = settings)
+      (settings) => {
+        this.currentSettings = settings;
+      }
     );
 
     this.modeSub = this.settingsService.modeState.subscribe(
       (mode) => (this.currentMode = mode)
+    );
+
+    this.submissionSub = this.settingsService.stopClock.subscribe(() =>
+      this.stop()
     );
   }
 
@@ -38,10 +45,11 @@ export class ClockComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.settingsUpdateSub.unsubscribe();
     this.modeSub.unsubscribe();
+    this.submissionSub.unsubscribe();
   }
 
   start() {
-    this.running = !this.running;
+    this.running = true;
     if (this.running) {
       const val = this.currentMode ? -1 : 1;
       this.interval = setInterval(() => {
@@ -54,8 +62,8 @@ export class ClockComponent implements OnInit, OnDestroy {
   }
 
   stop() {
-    this.running = !this.running;
-    clearInterval(this.interval);
+    this.running = false;
+    if (this.interval) clearInterval(this.interval);
   }
 
   toggleSettings() {
