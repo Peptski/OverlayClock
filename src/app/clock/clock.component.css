@@ -34,6 +34,7 @@ img {
   background-color: #1f2937;
   color: #d1d5db;
   border-radius: 50%;
+  z-index: 2;
 }
 
 .container i:hover {

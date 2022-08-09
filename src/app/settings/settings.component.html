@@ -1,4 +1,5 @@
 <div class="wrapper" *ngIf="state">
+  <div class="padbox" (click)="toggleState()"></div>
   <div class="container">
     <i class="ph-x close" (click)="toggleState()"></i>
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">

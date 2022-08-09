@@ -4,10 +4,10 @@ import { Settings } from './settings.model';
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
   public settings: Settings = {
-    hr: 3,
-    min: 2,
-    sec: 1,
-    fontSize: 3,
+    hr: 0,
+    min: 15,
+    sec: 0,
+    fontSize: 6,
     fontColor: '#d1d5db',
     fontWeight: 700,
     bgColor: '#111827',
