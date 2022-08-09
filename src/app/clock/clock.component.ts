@@ -72,5 +72,6 @@ export class ClockComponent implements OnInit, OnDestroy {
 
   clearValue() {
     this.settingsService.clearValue();
+    this.stop();
   }
 }
