@@ -15,8 +15,30 @@ export class SettingsService {
 
   settingsState = new EventEmitter<boolean>();
   settingsUpdated = new EventEmitter<Settings>();
+  modeState = new EventEmitter<boolean>();
 
   openSettings() {
     this.settingsState.emit(true);
+  }
+
+  clearValue() {
+    this.settings.hr = 0;
+    this.settings.min = 0;
+    this.settings.sec = 0;
+    this.settingsUpdated.emit(this.settings);
+  }
+
+  tick(value: number): boolean {
+    let time =
+      this.settings.hr * 3600 + this.settings.min * 60 + this.settings.sec;
+    time += value;
+    if (time === -1) return false;
+
+    this.settings.sec = time % 60;
+    this.settings.min = ((time - (time % 60)) % 3600) / 60;
+    this.settings.hr = (time - (time % 3600)) / 360;
+    this.settingsUpdated.emit(this.settings);
+
+    return true;
   }
 }

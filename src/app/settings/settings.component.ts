@@ -15,24 +15,30 @@ import { Subscription } from 'rxjs';
 export class SettingsComponent implements OnInit, OnDestroy {
   @ViewChild('form', { static: false })
   settingsForm!: NgForm;
-  settings: Settings;
-  state = false;
-  settingsSub: Subscription;
-  settingsUpdate: Subscription;
+  currentSettings: Settings;
+  open = false;
+  currentMode = false; //false for stopwatch, true for timer
+
+  settingsOpenSub: Subscription;
+  settingsUpdateSub: Subscription;
 
   constructor(private settingsService: SettingsService) {
-    this.settings = this.settingsService.settings;
-    this.settingsSub = this.settingsService.settingsState.subscribe((state) => {
-      this.state = state;
-      if (state) {
-        setTimeout(() => {
-          this.settingsForm.setValue(this.settings);
-        });
+    this.currentSettings = this.settingsService.settings;
+
+    this.settingsOpenSub = this.settingsService.settingsState.subscribe(
+      (state) => {
+        this.open = state;
+        if (state) {
+          setTimeout(() => {
+            this.settingsForm.setValue(this.currentSettings);
+          });
+        }
       }
-    });
-    this.settingsUpdate = this.settingsService.settingsUpdated.subscribe(
+    );
+
+    this.settingsUpdateSub = this.settingsService.settingsUpdated.subscribe(
       (settings) => {
-        this.settings = settings;
+        this.currentSettings = settings;
       }
     );
   }
@@ -40,8 +46,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    this.settingsSub.unsubscribe();
-    this.settingsUpdate.unsubscribe();
+    this.settingsOpenSub.unsubscribe();
+    this.settingsUpdateSub.unsubscribe();
   }
 
   onSubmit(form: NgForm) {
@@ -62,5 +68,15 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   toggleState() {
     this.settingsService.settingsState.emit(false);
+  }
+
+  toggleMode(mode: boolean) {
+    if (mode !== this.currentMode) {
+      this.currentMode = mode;
+      this.settingsService.modeState.emit(mode);
+      document
+        .querySelectorAll('.mode')
+        .forEach((ele) => ele.classList.toggle('active'));
+    }
   }
 }

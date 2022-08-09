@@ -1,32 +1,36 @@
-<div class="wrapper" [style.backgroundColor]="settings.bgColor">
-  <div class="container" [style.maxWidth]="5 * settings.fontSize + 'rem'">
+<div class="wrapper" [style.backgroundColor]="currentSettings.bgColor">
+  <div
+    class="container"
+    [style.minWidth]="5 * currentSettings.fontSize + 'rem'"
+  >
     <h1
-      [style.fontSize]="settings.fontSize + 'rem'"
-      [style.color]="settings.fontColor"
-      [style.fontWeight]="settings.fontWeight"
+      [style.fontSize]="currentSettings.fontSize + 'rem'"
+      [style.color]="currentSettings.fontColor"
+      [style.fontWeight]="currentSettings.fontWeight"
     >
-      {{ settings.hr | twodigit }}:{{ settings.min | twodigit }}:{{
-        settings.sec | twodigit
-      }}
+      {{ currentSettings.hr | twodigit }}:{{
+        currentSettings.min | twodigit
+      }}:{{ currentSettings.sec | twodigit }}
     </h1>
     <i
       *ngIf="!running"
-      [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
-      [style.color]="settings.fontColor"
+      [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
+      [style.color]="currentSettings.fontColor"
       class="ph-play icon"
-      (click)="toggleMode()"
+      (click)="start()"
     ></i>
     <i
       *ngIf="running"
-      [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
-      [style.color]="settings.fontColor"
+      [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
+      [style.color]="currentSettings.fontColor"
       class="ph-pause icon"
-      (click)="toggleMode()"
+      (click)="stop()"
     ></i>
     <i
-      [style.fontSize]="settings.fontSize * 0.66 + 'rem'"
-      [style.color]="settings.fontColor"
+      [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
+      [style.color]="currentSettings.fontColor"
       class="ph-arrow-counter-clockwise icon"
+      (click)="clearValue()"
     ></i>
   </div>
   <i (click)="toggleSettings()" class="ph-gear settings"></i>

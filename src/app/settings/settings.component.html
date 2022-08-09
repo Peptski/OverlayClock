@@ -1,11 +1,14 @@
-<div class="wrapper" *ngIf="state">
+<div class="wrapper" *ngIf="open">
   <div class="padbox" (click)="toggleState()"></div>
   <div class="container">
     <i class="ph-x close" (click)="toggleState()"></i>
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <div class="toggle-mode">
-        <i class="ph-caret-double-up active"></i>
-        <i class="ph-caret-double-down"></i>
+        <i
+          class="ph-caret-double-up active mode"
+          (click)="toggleMode(false)"
+        ></i>
+        <i class="ph-caret-double-down mode" (click)="toggleMode(true)"></i>
       </div>
 
       <div class="value-group">

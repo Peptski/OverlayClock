@@ -13,28 +13,56 @@ import { TwodigitPipe } from '../twodigit.pipe';
   styleUrls: ['./clock.component.css'],
 })
 export class ClockComponent implements OnInit, OnDestroy {
-  settings: Settings;
+  currentSettings: Settings;
+  currentMode = false; //false stopwatch, true timer
   running = false;
-  settingsUpdate: Subscription;
+  interval: any;
+
+  settingsUpdateSub: Subscription;
+  modeSub: Subscription;
 
   constructor(private settingsService: SettingsService) {
-    this.settings = this.settingsService.settings;
-    this.settingsUpdate = this.settingsService.settingsUpdated.subscribe(
-      (settings) => (this.settings = settings)
+    this.currentSettings = this.settingsService.settings;
+
+    this.settingsUpdateSub = this.settingsService.settingsUpdated.subscribe(
+      (settings) => (this.currentSettings = settings)
+    );
+
+    this.modeSub = this.settingsService.modeState.subscribe(
+      (mode) => (this.currentMode = mode)
     );
   }
 
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    this.settingsUpdate.unsubscribe();
+    this.settingsUpdateSub.unsubscribe();
+    this.modeSub.unsubscribe();
   }
 
-  toggleMode() {
+  start() {
     this.running = !this.running;
+    if (this.running) {
+      const val = this.currentMode ? -1 : 1;
+      this.interval = setInterval(() => {
+        if (!this.settingsService.tick(val)) {
+          clearInterval(this.interval);
+          this.running = false;
+        }
+      }, 1000);
+    }
+  }
+
+  stop() {
+    this.running = !this.running;
+    clearInterval(this.interval);
   }
 
   toggleSettings() {
     this.settingsService.openSettings();
+  }
+
+  clearValue() {
+    this.settingsService.clearValue();
   }
 }
