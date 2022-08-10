@@ -25,6 +25,7 @@ img {
   text-align: center;
   font-size: 3rem;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .container i {
