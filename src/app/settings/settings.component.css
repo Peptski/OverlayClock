@@ -12,10 +12,13 @@
 
 .container {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   top: 0;
   right: 0;
   height: 100vh;
-  width: 20vw;
+  width: 25vw;
   background-color: #1f2937;
   z-index: 2;
   font-size: 1.6rem;
@@ -23,12 +26,13 @@
 }
 
 form {
-  padding: 2rem;
+  padding: 4rem;
   position: relative;
   padding-top: 11.6rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin: auto 0;
 }
 
 .close {
@@ -41,41 +45,27 @@ form {
 
 .form-group {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  height: 2rem;
+  height: 4.2rem;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .form-control {
   padding: 0.4rem;
   border: none;
   border-radius: 0.5rem;
-  width: 6rem;
   border: 2px solid #1f2937;
-}
-
-.value-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  margin: 0 1.2rem 0 0;
-  gap: 0.4rem;
-}
-
-.value-group label {
-  grid-column: 1 / 4;
-}
-
-.value-group .form-control {
-  width: 6rem;
+  width: 10rem;
 }
 
 button {
   margin: 2.4rem auto;
-  padding: 0.6rem 1.8rem;
-  font-size: 2rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 2.6rem;
   font-weight: 600;
-  border-radius: 0.4rem;
+  border-radius: 8px;
   background-color: #e5e7eb;
   color: #374151;
   display: flex;
@@ -91,7 +81,7 @@ button:hover,
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .toggle-mode {
@@ -108,11 +98,160 @@ button:hover,
   background-color: #e5e7eb;
   color: #4b5563;
   border-radius: 50%;
-  font-size: 2.4rem;
-  padding: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 4rem;
+  padding: 2.4rem;
+  margin-bottom: 4rem;
 }
 
 input.ng-touched.ng-invalid {
   border: 2px solid #f87171;
+}
+
+.value-controls-group .form-control {
+  width: 5.8rem;
+}
+
+/***************************************/
+/* BELOW 1920px  (Regular desktop)*/
+/***************************************/
+
+@media (max-width: 120em) {
+  .value-controls-group .form-control {
+    width: 3.8rem;
+  }
+
+  .toggle-mode i {
+    font-size: 2.4rem;
+    padding: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  button {
+    margin: 1.2rem auto;
+    padding: 0.4rem 1rem;
+    font-size: 2.4rem;
+  }
+
+  .form-group {
+    width: 95%;
+  }
+
+  form {
+    padding-top: 8rem;
+  }
+}
+
+/***************************************/
+/* BELOW 1440p (Large laptop) */
+/***************************************/
+
+@media (max-width: 90em) {
+  .value-controls-group .form-control {
+    width: 3.2rem;
+  }
+
+  .toggle-mode i {
+    font-size: 2rem;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  button {
+    margin: 1.2rem auto;
+    padding: 0.4rem 0.8rem;
+    font-size: 1.8rem;
+  }
+
+  form {
+    padding: 4rem 2rem 2rem 2rem;
+  }
+
+  .form-control {
+    margin-bottom: 0;
+  }
+
+  .form-group label {
+    font-size: 1.2rem;
+  }
+
+  .form-group {
+    height: 2.4rem;
+  }
+}
+
+/***************************************/
+/* BELOW 1024px (Small Laptop)*/
+/***************************************/
+
+@media (max-width: 64em) {
+  .value-controls-group .form-control {
+    width: 2.4rem;
+  }
+
+  .toggle-mode i {
+    font-size: 1.4rem;
+    padding: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  button {
+    margin: 0.4rem auto;
+    padding: 0.2rem 0.4rem;
+    font-size: 1.6rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+  }
+
+  .form-control {
+    width: 6rem;
+    height: 1.4rem;
+  }
+
+  .form-group {
+    height: 1.6rem;
+  }
+
+  .value-controls-group {
+    height: 1.4rem;
+  }
+}
+
+/***************************************/
+/* BELOW 512px (Mobile)*/
+/***************************************/
+
+@media (max-width: 48em) {
+  .container {
+    width: 100vw;
+  }
+
+  .toggle-mode i {
+    font-size: 3.2rem;
+    padding: 1rem;
+  }
+
+  button {
+    margin: 1.2rem auto;
+    padding: 0.4rem 1.2rem;
+    font-size: 2.2rem;
+  }
+
+  form {
+    width: 80vw;
+    margin: auto;
+  }
+
+  .form-group label {
+    font-size: 2.4rem;
+  }
+
+  .form-group {
+    height: 3.4rem;
+  }
+
+  .form-control {
+    height: 2rem;
+  }
 }

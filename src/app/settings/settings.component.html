@@ -11,38 +11,40 @@
         <i class="ph-caret-double-down mode" (click)="toggleMode(true)"></i>
       </div>
 
-      <div class="value-group">
-        <label>Initial values</label>
-        <input
-          type="number"
-          class="form-control"
-          ngModel
-          required
-          ValidTime
-          min="0"
-          max="60"
-          name="hr"
-        />
-        <input
-          type="number"
-          class="form-control"
-          ngModel
-          required
-          ValidTime
-          min="0"
-          max="60"
-          name="min"
-        />
-        <input
-          type="number"
-          class="form-control"
-          ngModel
-          required
-          ValidTime
-          min="0"
-          max="60"
-          name="sec"
-        />
+      <div class="form-group">
+        <label>Start</label>
+        <div class="value-controls-group">
+          <input
+            type="number"
+            class="form-control"
+            ngModel
+            required
+            ValidTime
+            min="0"
+            max="60"
+            name="hr"
+          />
+          <input
+            type="number"
+            class="form-control"
+            ngModel
+            required
+            ValidTime
+            min="0"
+            max="60"
+            name="min"
+          />
+          <input
+            type="number"
+            class="form-control"
+            ngModel
+            required
+            ValidTime
+            min="0"
+            max="60"
+            name="sec"
+          />
+        </div>
       </div>
 
       <div class="form-group">
@@ -89,7 +91,7 @@
       </div>
 
       <div class="form-group">
-        <label for="bgcolor">Background color</label>
+        <label for="bgcolor">Background</label>
         <input
           type="text"
           class="form-control"
