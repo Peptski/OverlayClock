@@ -12,40 +12,36 @@ import { TwodigitPipe } from '../pipes/twodigit.pipe';
   templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.css'],
 })
-export class ClockComponent implements OnInit, OnDestroy {
+export class ClockComponent implements OnDestroy {
   currentSettings: Settings;
   currentMode = false;
   running = false;
   interval: any;
 
-  settingsUpdateSub: Subscription;
-  modeSub: Subscription;
-  submissionSub: Subscription;
+  subscriptions: Subscription[] = [];
 
   constructor(private settingsService: SettingsService) {
     this.currentSettings = this.settingsService.settings;
 
-    this.settingsUpdateSub = this.settingsService.settingsUpdated.subscribe(
-      (settings) => {
+    this.subscriptions.push(
+      this.settingsService.settingsUpdated.subscribe((settings) => {
         this.currentSettings = settings;
-      }
+      })
     );
 
-    this.modeSub = this.settingsService.modeState.subscribe(
-      (mode) => (this.currentMode = mode)
+    this.subscriptions.push(
+      this.settingsService.modeState.subscribe(
+        (mode) => (this.currentMode = mode)
+      )
     );
 
-    this.submissionSub = this.settingsService.stopClock.subscribe(() =>
-      this.stop()
+    this.subscriptions.push(
+      this.settingsService.stopClock.subscribe(() => this.stop())
     );
   }
 
-  ngOnInit(): void {}
-
   ngOnDestroy(): void {
-    this.settingsUpdateSub.unsubscribe();
-    this.modeSub.unsubscribe();
-    this.submissionSub.unsubscribe();
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
   start() {

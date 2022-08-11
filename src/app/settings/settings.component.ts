@@ -36,21 +36,19 @@ import { validColorDirective } from '../directives/valid-color-directive';
     ]),
   ],
 })
-export class SettingsComponent implements OnInit, OnDestroy {
+export class SettingsComponent implements OnDestroy {
   @ViewChild('form', { static: false })
   settingsForm!: NgForm;
   currentSettings: Settings;
   open = false;
-  currentMode = false; //false for stopwatch, true for timer
-
-  settingsOpenSub: Subscription;
-  settingsUpdateSub: Subscription;
+  currentMode = false;
+  subscriptions: Subscription[] = [];
 
   constructor(private settingsService: SettingsService) {
     this.currentSettings = this.settingsService.settings;
 
-    this.settingsOpenSub = this.settingsService.settingsState.subscribe(
-      (state) => {
+    this.subscriptions.push(
+      this.settingsService.settingsState.subscribe((state) => {
         this.open = state;
         if (state) {
           setTimeout(() => {
@@ -58,32 +56,29 @@ export class SettingsComponent implements OnInit, OnDestroy {
             this.saveLocally();
           });
         }
-      }
+      })
     );
 
-    this.settingsUpdateSub = this.settingsService.settingsUpdated.subscribe(
-      (settings) => {
+    this.subscriptions.push(
+      this.settingsService.settingsUpdated.subscribe((settings) => {
         this.currentSettings = settings;
         const canvas = document.querySelector('canvas')!;
         const ctx = canvas.getContext('2d')!;
         ctx.font = `${this.currentSettings.fontWeight} ${
           this.currentSettings.fontSize / 2
         }rem Inter`;
-      }
+      })
     );
   }
 
-  ngOnInit(): void {}
-
   ngOnDestroy(): void {
-    this.settingsOpenSub.unsubscribe();
-    this.settingsUpdateSub.unsubscribe();
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.settingsService.settingsUpdated.emit(
-        (this.settingsService.settings = new Settings(
+      this.settingsService.setSettings(
+        new Settings(
           form.value.hr,
           form.value.min,
           form.value.sec,
@@ -91,7 +86,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
           form.value.fontColor,
           form.value.fontWeight,
           form.value.bgColor
-        ))
+        )
       );
     }
 
