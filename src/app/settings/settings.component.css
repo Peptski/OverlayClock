@@ -41,6 +41,7 @@ form {
   right: 2rem;
   font-size: 2rem;
   z-index: 1;
+  cursor: pointer;
 }
 
 .form-group {
@@ -71,6 +72,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 button:hover,
@@ -101,6 +103,7 @@ button:hover,
   font-size: 4rem;
   padding: 2.4rem;
   margin-bottom: 4rem;
+  cursor: pointer;
 }
 
 input.ng-touched.ng-invalid {
@@ -115,7 +118,9 @@ input.ng-touched.ng-invalid {
   border: none;
   appearance: none;
   background-color: transparent;
-  height: 5rem;
+  height: 6rem;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 /***************************************/
