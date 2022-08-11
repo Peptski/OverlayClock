@@ -111,6 +111,13 @@ input.ng-touched.ng-invalid {
   width: 5.8rem;
 }
 
+.color-input {
+  border: none;
+  appearance: none;
+  background-color: transparent;
+  height: 5rem;
+}
+
 /***************************************/
 /* BELOW 1920px  (Regular desktop)*/
 /***************************************/

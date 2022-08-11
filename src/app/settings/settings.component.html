@@ -50,12 +50,13 @@
       <div class="form-group">
         <label for="fontsize">Fontsize</label>
         <input
-          type="number"
+          type="range"
           class="form-control"
           ngModel
           required
           validFontSize
           min="0"
+          step="1"
           max="8"
           name="fontSize"
         />
@@ -64,7 +65,7 @@
       <div class="form-group">
         <label for="fontweight">Fontweight</label>
         <input
-          type="number"
+          type="range"
           class="form-control"
           ngModel
           required
@@ -80,8 +81,8 @@
       <div class="form-group">
         <label for="fontcolor">Fontcolor</label>
         <input
-          type="text"
-          class="form-control"
+          type="color"
+          class="form-control color-input"
           ngModel
           required
           validColor
@@ -93,8 +94,8 @@
       <div class="form-group">
         <label for="bgcolor">Background</label>
         <input
-          type="text"
-          class="form-control"
+          type="color"
+          class="form-control color-input"
           ngModel
           required
           validColor
