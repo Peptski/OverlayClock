@@ -31,6 +31,7 @@ form {
   padding-top: 11.6rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
   margin: auto 0;
 }
@@ -118,8 +119,9 @@ input.ng-touched.ng-invalid {
   border: none;
   appearance: none;
   background-color: transparent;
-  height: 6rem;
+  height: 8rem;
   border-radius: 12px;
+  padding: 0;
   cursor: pointer;
 }
 
@@ -187,7 +189,7 @@ input.ng-touched.ng-invalid {
   }
 
   .form-group {
-    height: 2.4rem;
+    height: 3rem;
   }
 }
 
@@ -222,7 +224,7 @@ input.ng-touched.ng-invalid {
   }
 
   .form-group {
-    height: 1.6rem;
+    height: 2.4rem;
   }
 
   .value-controls-group {
@@ -231,7 +233,7 @@ input.ng-touched.ng-invalid {
 }
 
 /***************************************/
-/* BELOW 512px (Mobile)*/
+/* BELOW 768px (Mobile)*/
 /***************************************/
 
 @media (max-width: 48em) {
@@ -256,14 +258,24 @@ input.ng-touched.ng-invalid {
   }
 
   .form-group label {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
   }
 
   .form-group {
     height: 3.4rem;
+    width: 80%;
   }
 
   .form-control {
     height: 2rem;
+    width: 10rem;
+  }
+
+  .color-input {
+    height: 4rem;
+  }
+
+  .value-controls-group .form-control {
+    width: 2.4rem;
   }
 }
