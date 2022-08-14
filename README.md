@@ -3,4 +3,4 @@
 
 Fully customizable stopwatch/timer with overlay mode, opening the custom stopwatch/timer in PiP (Picture in Picture) mode, allowing a small Always on Top custom clock.
 
-Live demo: clock.peptski.com
+[Live Demo](https://clock.peptski.com)
