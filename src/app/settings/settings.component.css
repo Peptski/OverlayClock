@@ -112,6 +112,7 @@ input.ng-touched.ng-invalid {
 
 .value-controls-group .form-control {
   width: 5.8rem;
+  outline: none;
 }
 
 .color-input {
