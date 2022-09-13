@@ -1,9 +1,7 @@
-<div class="wrapper" [style.backgroundColor]="currentSettings.bgColor">
-  <div
-    class="container"
-    [style.minWidth]="5 * currentSettings.fontSize + 'rem'"
-  >
+<div class="container" [style.backgroundColor]="currentSettings.bgColor">
+  <main class="clock" [style.minWidth]="5 * currentSettings.fontSize + 'rem'">
     <h1
+      class="clock__time"
       [style.fontSize]="currentSettings.fontSize + 'rem'"
       [style.color]="currentSettings.fontColor"
       [style.fontWeight]="currentSettings.fontWeight"
@@ -14,28 +12,28 @@
     </h1>
 
     <i
+      class="clock__icon ph-play"
       *ngIf="!running"
       [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
       [style.color]="currentSettings.fontColor"
-      class="ph-play icon hover"
       [ngClass]="{ hover: currentSettings.bgColor === '#111827' }"
       (click)="start()"
     ></i>
     <i
+      class="clock__icon ph-pause"
       *ngIf="running"
       [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
       [style.color]="currentSettings.fontColor"
-      class="ph-pause icon hover"
       [ngClass]="{ hover: currentSettings.bgColor === '#111827' }"
       (click)="stop()"
     ></i>
     <i
+      class="clock__icon ph-arrow-counter-clockwise"
       [style.fontSize]="currentSettings.fontSize * 0.66 + 'rem'"
       [style.color]="currentSettings.fontColor"
-      class="ph-arrow-counter-clockwise icon hover"
       [ngClass]="{ hover: currentSettings.bgColor === '#111827' }"
       (click)="clearValue()"
     ></i>
-  </div>
-  <i (click)="toggleSettings()" class="ph-gear settings"></i>
+  </main>
+  <i (click)="toggleSettings()" class="ph-gear container__settings"></i>
 </div>

@@ -1,26 +1,22 @@
-img {
-  width: 32px;
-}
-
-.wrapper {
+.container {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0f172a;
-  color: #d1d5db;
+  background-color: #14171c;
+  color: #c1c7d1;
   position: relative;
 }
 
-.container {
+.clock {
   max-width: 15rem;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.container h1 {
+.clock__time {
   grid-column: 1 / 5;
   text-align: center;
   font-size: 3rem;
@@ -28,23 +24,14 @@ img {
   font-variant-numeric: tabular-nums;
 }
 
-.container i {
+.clock__icon {
   margin: auto;
   font-size: 2rem;
   padding: 0.6rem;
-  color: #d1d5db;
+  color: #c1c7d1;
   border-radius: 50%;
   z-index: 1;
   cursor: pointer;
-}
-
-.hover {
-  background-color: #1f2937;
-}
-
-.hover:hover {
-  background-color: #374151;
-  color: #e5e7eb;
 }
 
 .ph-play,
@@ -58,10 +45,10 @@ img {
   grid-row: 2 / 3;
 }
 
-.settings {
+.container__settings {
   position: absolute;
   top: 2rem;
   right: 2rem;
-  font-size: 2rem;
+  font-size: 3.2rem;
   cursor: pointer;
 }
