@@ -5,124 +5,137 @@
   z-index: 1;
 }
 
-.padbox {
+.wrapper__padbox {
   width: 80vw;
   height: 100vh;
 }
 
-.container {
+.wrapper__container {
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   top: 0;
   right: 0;
   height: 100vh;
   width: 25vw;
-  background-color: #1f2937;
+  background-color: #1e232a;
   z-index: 2;
   font-size: 1.6rem;
-  color: #e2e8f0;
+  color: #d1d5dc;
 }
 
-form {
-  padding: 4rem;
-  position: relative;
-  padding-top: 11.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: auto 0;
-}
-
-.close {
+.container__close {
   position: absolute;
   top: 2rem;
   right: 2rem;
-  font-size: 2rem;
+  font-size: 3.2rem;
   z-index: 1;
   cursor: pointer;
 }
 
-.form-group {
+.container__form {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 4.2rem;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.form__toggle {
+  display: flex;
+  justify-content: center;
+  gap: 3.6rem;
+}
+
+.form__toggle i {
+  margin-bottom: 4.2rem;
+  background-color: #c1c7d1;
+  color: #323a46;
+  border-radius: 50%;
+  font-size: 4.2rem;
+  padding: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 0 0.4rem #1e232a;
+}
+
+.form__toggle .form__toggle--active {
+  background-color: #323a46;
+  color: #c1c7d1;
+}
+
+.form__toggle i:not(.form__toggle--active):hover {
+  background-color: #64748b;
+  color: #1e232a;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 80%;
-  margin: 0 auto;
+  gap: 0.4rem;
+  height: 4.2rem;
 }
 
-.form-control {
-  padding: 0.4rem;
-  border: none;
-  border-radius: 0.5rem;
-  border: 2px solid #1f2937;
-  width: 10rem;
-}
-
-button {
-  margin: 2.4rem auto;
-  padding: 0.8rem 1.6rem;
-  font-size: 2.6rem;
+.form__group__label {
   font-weight: 600;
+}
+
+.form__control {
+  padding: 0.4rem;
+  outline: none;
   border-radius: 8px;
-  background-color: #e5e7eb;
-  color: #374151;
+  width: 15rem;
+  overflow: hidden;
+}
+
+.form__group--value {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.form__control--value {
+  width: 4.5rem;
+}
+
+.form__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2.4rem;
+}
+
+.buttons__button {
+  padding: 0.6rem 1.8rem;
+  font-size: 2.4rem;
+  border-radius: 8px;
+  background-color: #c1c7d1;
+  color: #323a46;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 
-button:hover,
-.toggle-mode i:hover:not(.active) {
-  background-color: #9ca3af;
-  color: #111827;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-around;
-}
-
-.toggle-mode {
-  display: flex;
-  justify-content: space-around;
-}
-
-.toggle-mode .active {
-  background-color: #4b5563;
-  color: #e5e7eb;
-}
-
-.toggle-mode i {
-  background-color: #e5e7eb;
-  color: #4b5563;
-  border-radius: 50%;
-  font-size: 4rem;
-  padding: 2.4rem;
-  margin-bottom: 4rem;
-  cursor: pointer;
+.buttons__button:hover {
+  background-color: #64748b;
+  color: #1e232a;
 }
 
 input.ng-touched.ng-invalid {
-  border: 2px solid #f87171;
+  box-shadow: 0 0 0.4rem 0.2rem #a85f5f;
 }
 
-.value-controls-group .form-control {
-  width: 5.8rem;
-  outline: none;
-}
-
-.color-input {
-  border: none;
-  appearance: none;
+.control--color {
   background-color: transparent;
-  height: 8rem;
-  border-radius: 12px;
   padding: 0;
+  height: 1.8rem;
   cursor: pointer;
+}
+
+.control--drag {
+  cursor: grab;
 }
 
 /***************************************/
@@ -130,28 +143,14 @@ input.ng-touched.ng-invalid {
 /***************************************/
 
 @media (max-width: 120em) {
-  .value-controls-group .form-control {
-    width: 3.8rem;
-  }
-
-  .toggle-mode i {
-    font-size: 2.4rem;
-    padding: 1.8rem;
+  .form__toggle i {
+    font-size: 2.8rem;
+    padding: 1.2rem;
     margin-bottom: 1.2rem;
   }
 
-  button {
-    margin: 1.2rem auto;
-    padding: 0.4rem 1rem;
-    font-size: 2.4rem;
-  }
-
-  .form-group {
-    width: 95%;
-  }
-
-  form {
-    padding-top: 8rem;
+  .buttons__button {
+    padding: 0.4rem 1.2rem;
   }
 }
 
@@ -160,36 +159,52 @@ input.ng-touched.ng-invalid {
 /***************************************/
 
 @media (max-width: 90em) {
-  .value-controls-group .form-control {
-    width: 3.2rem;
+  .wrapper__container {
+    width: 25vw;
   }
 
-  .toggle-mode i {
-    font-size: 2rem;
-    padding: 1rem;
-    margin-bottom: 0.8rem;
+  .container__close {
+    top: 1.2rem;
+    right: 1.2rem;
+    font-size: 2.4rem;
   }
 
-  button {
-    margin: 1.2rem auto;
-    padding: 0.4rem 0.8rem;
+  .form__toggle {
+    gap: 1.2rem;
+  }
+
+  .form__toggle i {
+    font-size: 2.4rem;
+    padding: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .form__buttons {
+    gap: 0.8rem;
+  }
+
+  .buttons__button {
     font-size: 1.8rem;
   }
 
-  form {
-    padding: 4rem 2rem 2rem 2rem;
+  .container__form {
+    gap: 0.4rem;
   }
 
-  .form-control {
-    margin-bottom: 0;
-  }
-
-  .form-group label {
+  .form__group__label {
     font-size: 1.2rem;
   }
 
-  .form-group {
-    height: 3rem;
+  .form__group {
+    gap: 0;
+  }
+
+  .form__control {
+    width: 12rem;
+  }
+
+  .form__control--value {
+    width: 3.5rem;
   }
 }
 
@@ -198,37 +213,24 @@ input.ng-touched.ng-invalid {
 /***************************************/
 
 @media (max-width: 64em) {
-  .value-controls-group .form-control {
-    width: 2.4rem;
+  .wrapper__container {
+    width: 35vw;
   }
 
-  .toggle-mode i {
-    font-size: 1.4rem;
-    padding: 0.8rem;
-    margin-bottom: 0;
+  .container__form {
+    gap: 0;
   }
 
-  button {
-    margin: 0.4rem auto;
-    padding: 0.2rem 0.4rem;
-    font-size: 1.6rem;
+  .control--drag {
+    padding: 0;
   }
 
-  .form-group label {
-    font-size: 0.8rem;
+  .form__group {
+    height: 3.6rem;
   }
 
-  .form-control {
-    width: 6rem;
-    height: 1.4rem;
-  }
-
-  .form-group {
-    height: 2.4rem;
-  }
-
-  .value-controls-group {
-    height: 1.4rem;
+  .form__buttons {
+    margin-top: 0.8rem;
   }
 }
 
@@ -237,45 +239,7 @@ input.ng-touched.ng-invalid {
 /***************************************/
 
 @media (max-width: 48em) {
-  .container {
+  .wrapper__container {
     width: 100vw;
-  }
-
-  .toggle-mode i {
-    font-size: 3.2rem;
-    padding: 1rem;
-  }
-
-  button {
-    margin: 1.2rem auto;
-    padding: 0.4rem 1.2rem;
-    font-size: 2.2rem;
-  }
-
-  form {
-    width: 80vw;
-    margin: auto;
-  }
-
-  .form-group label {
-    font-size: 1.8rem;
-  }
-
-  .form-group {
-    height: 3.4rem;
-    width: 80%;
-  }
-
-  .form-control {
-    height: 2rem;
-    width: 10rem;
-  }
-
-  .color-input {
-    height: 4rem;
-  }
-
-  .value-controls-group .form-control {
-    width: 2.4rem;
   }
 }

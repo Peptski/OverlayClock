@@ -8,9 +8,9 @@ export class SettingsService {
     min: 0,
     sec: 0,
     fontSize: 5,
-    fontColor: '#d1d5db',
+    fontColor: '#c1c7d1',
     fontWeight: 700,
-    bgColor: '#111827',
+    bgColor: '#14171c',
   };
 
   settingsState = new EventEmitter<boolean>();
@@ -58,9 +58,9 @@ export class SettingsService {
       min: 0,
       sec: 0,
       fontSize: 5,
-      fontColor: '#d1d5db',
+      fontColor: '#c1c7d1',
       fontWeight: 700,
-      bgColor: '#111827',
+      bgColor: '#14171c',
     };
     this.settingsUpdated.emit(this.settings);
     this.settingsState.emit(true);

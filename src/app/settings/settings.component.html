@@ -1,22 +1,23 @@
 <div class="wrapper" @openClose *ngIf="open">
-  <div class="padbox" (click)="toggleState()"></div>
-  <div class="container">
-    <i class="ph-x close" (click)="toggleState()"></i>
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-      <div class="toggle-mode">
+  <div class="wrapper__padbox" (click)="toggleState()"></div>
+  <div class="wrapper__container">
+    <i class="ph-x container__close" (click)="toggleState()"></i>
+
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="container__form">
+      <div class="form__toggle">
         <i
-          class="ph-caret-double-up active mode"
+          class="ph-caret-double-up form__toggle--active mode"
           (click)="toggleMode(false)"
         ></i>
         <i class="ph-caret-double-down mode" (click)="toggleMode(true)"></i>
       </div>
 
-      <div class="form-group">
-        <label>Start</label>
-        <div class="value-controls-group">
+      <div class="form__group">
+        <label class="form__group__label">Start</label>
+        <div class="form__group--value">
           <input
             type="number"
-            class="form-control"
+            class="form__control form__control--value"
             ngModel
             required
             ValidTime
@@ -26,7 +27,7 @@
           />
           <input
             type="number"
-            class="form-control"
+            class="form__control form__control--value"
             ngModel
             required
             ValidTime
@@ -36,7 +37,7 @@
           />
           <input
             type="number"
-            class="form-control"
+            class="form__control form__control--value"
             ngModel
             required
             ValidTime
@@ -47,11 +48,11 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="fontsize">Fontsize</label>
+      <div class="form__group">
+        <label class="form__group__label" for="fontsize">Fontsize</label>
         <input
           type="range"
-          class="form-control"
+          class="form__control control--drag"
           ngModel
           required
           validFontSize
@@ -62,11 +63,11 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="fontweight">Fontweight</label>
+      <div class="form__group">
+        <label class="form__group__label" for="fontweight">Fontweight</label>
         <input
           type="range"
-          class="form-control"
+          class="form__control control--drag"
           ngModel
           required
           validFontWeight
@@ -78,11 +79,11 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="fontcolor">Fontcolor</label>
+      <div class="form__group">
+        <label class="form__group__label" for="fontcolor">Fontcolor</label>
         <input
           type="color"
-          class="form-control color-input"
+          class="form__control control--color"
           ngModel
           required
           validColor
@@ -91,11 +92,11 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="bgcolor">Background</label>
+      <div class="form__group">
+        <label class="form__group__label" for="bgcolor">Background</label>
         <input
           type="color"
-          class="form-control color-input"
+          class="form__control control--color"
           ngModel
           required
           validColor
@@ -103,12 +104,14 @@
         />
       </div>
 
-      <div class="buttons">
-        <button type="button" (click)="openPiP()">
+      <div class="form__buttons">
+        <button type="button" (click)="openPiP()" class="buttons__button">
           <i class="ph-picture-in-picture"></i>
         </button>
-        <button type="submit"><i class="ph-floppy-disk"></i></button>
-        <button type="button">
+        <button class="buttons__button" type="submit">
+          <i class="ph-floppy-disk"></i>
+        </button>
+        <button class="buttons__button" type="button">
           <i class="ph-arrow-counter-clockwise" (click)="resetSettings()"></i>
         </button>
       </div>

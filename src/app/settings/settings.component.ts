@@ -108,7 +108,7 @@ export class SettingsComponent implements OnDestroy {
       this.settingsService.modeState.emit(mode);
       document
         .querySelectorAll('.mode')
-        .forEach((ele) => ele.classList.toggle('active'));
+        .forEach((ele) => ele.classList.toggle('form__toggle--active'));
     }
   }
 
