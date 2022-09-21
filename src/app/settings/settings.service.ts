@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Settings } from './settings.model';
 
 @Injectable({ providedIn: 'root' })
@@ -13,10 +14,10 @@ export class SettingsService {
     bgColor: '#14171c',
   };
 
-  settingsState = new EventEmitter<boolean>();
-  settingsUpdated = new EventEmitter<Settings>();
-  modeState = new EventEmitter<boolean>();
-  stopClock = new EventEmitter<boolean>();
+  settingsState = new Subject<boolean>();
+  settingsUpdated = new Subject<Settings>();
+  modeState = new Subject<boolean>();
+  stopClock = new Subject<boolean>();
 
   get settings(): Settings {
     return { ...this._settings };
@@ -24,18 +25,18 @@ export class SettingsService {
 
   setSettings(settings: Settings) {
     this._settings = settings;
-    this.settingsUpdated.emit(this.settings);
+    this.settingsUpdated.next(this.settings);
   }
 
   openSettings() {
-    this.settingsState.emit(true);
+    this.settingsState.next(true);
   }
 
   clearValue() {
     this._settings.hr = 0;
     this._settings.min = 0;
     this._settings.sec = 0;
-    this.settingsUpdated.emit(this.settings);
+    this.settingsUpdated.next(this.settings);
   }
 
   tick(value: number): boolean {
@@ -47,7 +48,7 @@ export class SettingsService {
     this._settings.sec = time % 60;
     this._settings.min = ((time - (time % 60)) % 3600) / 60;
     this._settings.hr = (time - (time % 3600)) / 3600;
-    this.settingsUpdated.emit(this.settings);
+    this.settingsUpdated.next(this.settings);
 
     return true;
   }
@@ -62,7 +63,7 @@ export class SettingsService {
       fontWeight: 700,
       bgColor: '#14171c',
     };
-    this.settingsUpdated.emit(this.settings);
-    this.settingsState.emit(true);
+    this.settingsUpdated.next(this.settings);
+    this.settingsState.next(true);
   }
 }

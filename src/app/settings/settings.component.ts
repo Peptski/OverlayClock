@@ -90,7 +90,7 @@ export class SettingsComponent implements OnDestroy {
       );
     }
 
-    this.settingsService.stopClock.emit(true);
+    this.settingsService.stopClock.next(true);
     this.saveLocally();
   }
 
@@ -99,13 +99,13 @@ export class SettingsComponent implements OnDestroy {
   }
 
   toggleState() {
-    this.settingsService.settingsState.emit(false);
+    this.settingsService.settingsState.next(false);
   }
 
   toggleMode(mode: boolean) {
     if (mode !== this.currentMode) {
       this.currentMode = mode;
-      this.settingsService.modeState.emit(mode);
+      this.settingsService.modeState.next(mode);
       document
         .querySelectorAll('.mode')
         .forEach((ele) => ele.classList.toggle('form__toggle--active'));
