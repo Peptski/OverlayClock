@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 import { ValidTimeDirective } from '../directives/valid-time.directive';
 import { validFontSizeDirective } from '../directives/valid-font-size.directive';
 import { validFontWeightDirective } from '../directives/valid-font-weight.directive';
-import { validColorDirective } from '../directives/valid-color-directive';
+import { validColorDirective } from '../directives/valid-color.directive';
 
 @Component({
   selector: 'app-settings',
