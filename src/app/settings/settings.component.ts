@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SettingsService } from './settings.service';
 import { Settings } from './settings.model';
@@ -140,7 +140,7 @@ export class SettingsComponent implements OnDestroy {
         canvas.width / 2,
         canvas.height / 1.7
       );
-    }, 25);
+    }, 100);
 
     let vidStrm = canvas.captureStream(30);
 
